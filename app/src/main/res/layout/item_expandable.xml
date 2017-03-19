@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/ivArrow"
+        android:src="@mipmap/ic_expandable_arrow_36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/tvAdapterDemos"
+        android:text="@string/adapter_demos"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="36dp" />
+
+</LinearLayout>

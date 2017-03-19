@@ -1,34 +1,25 @@
 package com.im_hero.androidcommon;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.view.View;
+import android.support.v7.widget.RecyclerView;
 
+import com.im_hero.adapter.ExpandableAdapter;
+import com.im_hero.adapter.IData;
 import com.im_hero.androidcommon.common.ToolbarActivity;
+import com.im_hero.androidcommon.data.ItemAdapterDemos;
+
+import java.util.ArrayList;
 
 public class FunctionsActivity extends ToolbarActivity {
+    private RecyclerView rvFunctionsMenu;
+    private ExpandableAdapter functionAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
+        initView();
     }
 
     @Override
@@ -36,5 +27,21 @@ public class FunctionsActivity extends ToolbarActivity {
         return R.layout.activity_functions;
     }
 
+    private void initView() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+                drawer,
+                toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
+        rvFunctionsMenu = (RecyclerView) findViewById(R.id.rvFunctionsMenu);
+        ArrayList<IData> functions = new ArrayList<>(1);
+        functionAdapter = new ExpandableAdapter(functions, rvFunctionsMenu, 1, true, true);
+        for (int i = 0; i < 100; i++) {
+            functions.add(new ItemAdapterDemos(functionAdapter));
+        }
+    }
 }

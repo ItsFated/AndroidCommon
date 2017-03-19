@@ -14,4 +14,10 @@
 
     <include layout="@layout/functions_left"/>
 
+    <LinearLayout
+        android:layout_gravity="end"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </android.support.v4.widget.DrawerLayout>
